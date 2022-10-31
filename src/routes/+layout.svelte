@@ -45,13 +45,13 @@
 	<div class="snap-sentinel" on:click={closeModal} />
 	<div class="modal">
 		<div class="snap-sentinel" />
-		<menu>
+		<menu style="min-height:400px">
 			<button>Action 1</button>
 			<button>Action 2</button>
 			<button>Action 3</button>
 		</menu>
 		<menu>
-			<button type="reset">Cancel</button>
+			<button type="reset" on:click={closeModal}>Cancel</button>
 		</menu>
 	</div>
 </dialog>
