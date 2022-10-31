@@ -77,6 +77,14 @@
 		-webkit-animation: scroll-start 2ms;
 		animation: scroll-start 2ms;
 	}
+	@keyframes scroll-start {
+		from {
+			scroll-snap-align: unset;
+		}
+		to {
+			scroll-snap-align: center;
+		}
+	}
 	main {
 		display: grid;
 		grid-template-rows: auto 1fr auto;
