@@ -17,6 +17,12 @@
 		/*margin: 20px;*/
 		scrollbar-width: none;
 		overscroll-behavior-x: contain;
+		scroll-snap-align: center;
+		flex-shrink: 0;
+		block-size: 100%;
+	}
+	.android-homescreen::-webkit-scrollbar {
+		display: none;
 	}
 	.snap-x {
 		display: flex;

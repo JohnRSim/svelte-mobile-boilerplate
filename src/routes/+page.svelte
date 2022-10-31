@@ -76,11 +76,11 @@
 		display: grid;
 		-webkit-animation: scroll-start 2ms;
 		animation: scroll-start 2ms;
-		scroll-snap-stop: always;
 	}
 	main {
 		display: grid;
 		grid-template-rows: auto 1fr auto;
+		scroll-snap-stop: always;
 	}
 	section {
 		display: grid;
