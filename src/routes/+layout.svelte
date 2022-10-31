@@ -10,26 +10,29 @@
 	onMount(async () => {});
 
 	async function showModal() {
-		dialog.showModal();
-		dialog.querySelector('.snap-sentinel').scrollIntoView();
+		if (!initDialog) {
+			dialog.showModal();
+			dialog.querySelector('.snap-sentinel').scrollIntoView();
 
-		setTimeout(() => {
-			dialog.querySelector('.modal').scrollIntoView({ behavior: 'smooth' });
-		}, 100);
-		setTimeout(() => {
-			initDialog = true;
-		}, 300);
+			setTimeout(() => {
+				dialog.querySelector('.modal').scrollIntoView({ behavior: 'smooth' });
+			}, 100);
+			setTimeout(() => {
+				initDialog = true;
+			}, 100);
+		}
 	}
 
 	function closeModal() {
-		hideModal = true;
-		dialog.querySelector('.snap-sentinel').scrollIntoView({ behavior: 'smooth' });
-		console.log('cli');
-		initDialog = false;
-		setTimeout(() => {
-			dialog.close();
-			hideModal = false;
-		}, 300);
+		if (initDialog && !hideModal) {
+			hideModal = true;
+			dialog.querySelector('.snap-sentinel').scrollIntoView({ behavior: 'smooth' });
+			initDialog = false;
+			setTimeout(() => {
+				dialog.close();
+				hideModal = false;
+			}, 400);
+		}
 	}
 </script>
 
