@@ -1,88 +1,171 @@
 <script>
-	import ogSquareImageSrc from '$lib/assets/home/home-open-graph-square.jpg';
-	import ogImageSrc from '$lib/assets/home/home-open-graph.jpg';
-	import twitterImageSrc from '$lib/assets/home/home-twitter.jpg';
-	import featuredImageSrc from '$lib/assets/home/home.jpg';
-	import BlogRoll from '$lib/components/BlogRoll.svelte';
-	import Card from '$lib/components/Card.svelte';
-	import SEO from '$lib/components/SEO/index.svelte';
-	import website from '$lib/config/website';
-
-	/** @type {import('./$types').PageData} */
-	export let data;
-	const { posts } = data;
-
-	const { author, siteUrl } = website;
-
-	let title = 'Home';
-	const breadcrumbs = [
-		{
-			name: 'Home',
-			slug: '',
-		},
-	];
-	let metadescription =
-		'SvelteKit MDsvex Blog Starter - starter code by Rodney Lab to help you get going on your next blog site';
-	const featuredImageAlt =
-		'picture of a person with long, curly hair, wearing a red had taking a picture with an analogue camera';
-	const featuredImage = {
-		url: featuredImageSrc,
-		alt: featuredImageAlt,
-		width: 672,
-		height: 448,
-		caption: 'Home page',
-	};
-	const ogImage = {
-		url: ogImageSrc,
-		alt: featuredImageAlt,
-	};
-	const ogSquareImage = {
-		url: ogSquareImageSrc,
-		alt: featuredImageAlt,
-	};
-
-	const twitterImage = {
-		url: twitterImageSrc,
-		alt: featuredImageAlt,
-	};
-	const entityMeta = {
-		url: `${siteUrl}/`,
-		faviconWidth: 512,
-		faviconHeight: 512,
-		caption: author,
-	};
-	const seoProps = {
-		title,
-		slug: '',
-		entityMeta,
-		datePublished: '2021-07-07T14:19:33.000+0100',
-		lastUpdated: '2021-07-07T14:19:33.000+0100',
-		breadcrumbs,
-		metadescription,
-		featuredImage,
-		ogImage,
-		ogSquareImage,
-		twitterImage,
-	};
 </script>
 
-<SEO {...seoProps} />
-<header>
-	<h1>Climate &mdash; Sveltekit Starter</h1>
-	<h2>SvelteKit MDsveX (Markdown for Svelte) Blog</h2>
-</header>
-<Card>
-	<h2><span>About me</span></h2>
-	<p>
-		I live and breathe analogue photography. I show you my favourite analogue film cameras on this
-		site. Hopefully if you are not into analogue photography yet, some of my enthusiasm will rub off
-		onto you.
-	</p>
-</Card>
-<BlogRoll {posts} />
+<section class="news">
+	<header>
+		<h2>News</h2>
+	</header>
+	<div class="card-list">
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+		<div class="card" />
+	</div>
+</section>
+
+<main>
+	<div class="status-bar" />
+	<div class="snap-x">
+		<section>
+			<div class="datetime-widget">
+				<time>7:20</time>
+				<date>Monday, Sept 12</date>
+			</div>
+		</section>
+		<section>
+			<nav class="app-grid">
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+			</nav>
+		</section>
+		<section>
+			<nav class="app-grid" style="align-content: start">
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+				<div class="app" />
+			</nav>
+		</section>
+	</div>
+	<footer>
+		<nav>
+			<div class="app" />
+			<div class="app" />
+			<div class="app" />
+			<div class="app" />
+			<div class="app" />
+		</nav>
+		<input type="search" placeholder="Ask Google.." />
+	</footer>
+</main>
 
 <style lang="scss">
-	header > h2 {
-		font-size: $font-size-3;
+	.news {
+		background: #f8f9fa;
+		overflow-y: auto;
+		display: grid;
+		-webkit-animation: scroll-start 2ms;
+		animation: scroll-start 2ms;
+		scroll-snap-stop: always;
+	}
+	main {
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+	}
+	section {
+		display: grid;
+	}
+
+	section,
+	main {
+		scroll-snap-align: center;
+		flex-shrink: 0;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+
+	header {
+		padding: 1rem;
+	}
+	.card-list {
+		display: grid;
+		gap: 1px;
+		grid-auto-rows: 20ch;
+	}
+
+	.card {
+		background: #dee2e6;
+	}
+	.status-bar {
+		block-size: 1.5rem;
+		background: #dee2e6;
+	}
+	.snap-x {
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-ms-scroll-snap-type: x mandatory;
+		scroll-snap-type: x mandatory;
+	}
+	.datetime-widget {
+		display: grid;
+		align-content: start;
+		padding: 1rem;
+	}
+	.datetime-widget > time {
+		font-size: 2.5rem;
+		font-weight: 100;
+		line-height: 0.95;
+	}
+	.datetime-widget > date {
+		font-size: 0.75rem;
+	}
+	.app-grid {
+		align-content: end;
+	}
+	nav {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 1rem;
+		padding-inline: 1rem;
+		padding-block: 1rem;
+	}
+	.app {
+		aspect-ratio: 1;
+		border-radius: 1e5px;
+		background: #ced4da;
+	}
+	footer::after {
+		content: '';
+		background: black;
+		height: 3px;
+		border-radius: 3px;
+		position: absolute;
+		inset-block-end: 3px;
+		inline-size: 30%;
+		inset-inline-start: 35%;
+	}
+	footer {
+		position: relative;
+		display: grid;
+	}
+	input[type='search'] {
+		margin: 1rem;
+		background: #ced4da;
+		border-radius: 1e5px;
+		justify-self: stretch;
+		border: 0px;
+		padding-block: 0.25rem;
+		padding-inline: 0.5rem;
 	}
 </style>
